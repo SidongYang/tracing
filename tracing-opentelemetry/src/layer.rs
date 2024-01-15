@@ -332,12 +332,12 @@ impl<'a> field::Visit for SpanAttributeVisitor<'a> {
     /// [`Span`]: opentelemetry::trace::Span
     fn record_str(&mut self, field: &field::Field, value: &str) {
         match field.name() {
-            SPAN_NAME_FIELD => self.span_builder.name = value.to_string().into(),
-            SPAN_KIND_FIELD => self.span_builder.span_kind = str_to_span_kind(value),
-            SPAN_STATUS_CODE_FIELD => self.span_builder.status_code = str_to_status_code(value),
-            SPAN_STATUS_MESSAGE_FIELD => {
-                self.span_builder.status_message = Some(value.to_owned().into())
-            }
+            // SPAN_NAME_FIELD => self.span_builder.name = value.to_string().into(),
+            // SPAN_KIND_FIELD => self.span_builder.span_kind = str_to_span_kind(value),
+            // SPAN_STATUS_CODE_FIELD => self.span_builder.status_code = str_to_status_code(value),
+            // SPAN_STATUS_MESSAGE_FIELD => {
+            //     self.span_builder.status_message = Some(value.to_owned().into())
+            // }
             _ => self.record(KeyValue::new(field.name(), value.to_string())),
         }
     }
